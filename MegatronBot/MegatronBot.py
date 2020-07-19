@@ -1,6 +1,6 @@
 import discord
 import asyncio
-import insult
+import insult_generator as insult
 import sys
 from random import randint
 
@@ -13,7 +13,7 @@ async def on_ready():
 	print(client.user.id)
 	print('------')
 	await client.wait_until_ready()
-	channel = client.get_channel(355230783511855105)
+	channel = client.get_channel(int(os.environ['RobotTestingChannel']))
 	await channel.send('Megatron Activated!')
 
 @client.event
@@ -33,4 +33,4 @@ async def on_message(message):
 			await client.logout()
 			sys.exit()
 
-client.run('MzU1MjM3NzE2ODQ3NDkzMTIx.XxN9nA.VIlBJyotinERuZDRk6XtYUobLKM')
+client.run(os.environ['DiscordBotToken'])
